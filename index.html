@@ -8,12 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       min-height: 100vh;
       background: #0b0f1a;
@@ -24,7 +19,6 @@
       justify-content: center;
       padding: 1.5rem;
     }
-
     .engine {
       max-width: 1300px;
       width: 100%;
@@ -36,7 +30,6 @@
       padding: 2rem;
       box-shadow: 0 25px 45px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,220,255,0.2) inset;
     }
-
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
@@ -46,7 +39,6 @@
       letter-spacing: 2px;
       text-shadow: 0 0 15px cyan;
     }
-
     .sub {
       text-align: center;
       color: #9ec6e0;
@@ -55,13 +47,11 @@
       padding-bottom: 1rem;
       margin-bottom: 2rem;
     }
-
     .grid-7 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
-
     .card {
       background: rgba(0, 22, 40, 0.7);
       border: 1px solid #0ff3;
@@ -71,12 +61,7 @@
       display: flex;
       flex-direction: column;
     }
-
-    .card:hover {
-      border-color: #0ff;
-      box-shadow: 0 0 18px #0ff5;
-    }
-
+    .card:hover { border-color: #0ff; box-shadow: 0 0 18px #0ff5; }
     .card-title {
       font-family: 'Orbitron', sans-serif;
       font-weight: 600;
@@ -87,15 +72,7 @@
       align-items: center;
       gap: 0.4rem;
     }
-
-    .card-title span {
-      font-size: 1.6rem;
-    }
-
-    .param {
-      margin-bottom: 0.7rem;
-    }
-
+    .param { margin-bottom: 0.7rem; }
     .param label {
       display: block;
       color: #b0d0f0;
@@ -104,7 +81,6 @@
       letter-spacing: 0.5px;
       margin-bottom: 0.2rem;
     }
-
     .param input, .param select {
       width: 100%;
       background: #011520;
@@ -116,17 +92,7 @@
       color: #0ff;
       outline: none;
     }
-
-    .param select {
-      color: #b0f0ff;
-      option { background: #022; }
-    }
-
-    .param input:focus, .param select:focus {
-      border-color: white;
-      box-shadow: 0 0 12px cyan;
-    }
-
+    .param input:focus { border-color: white; box-shadow: 0 0 12px cyan; }
     .button {
       background: transparent;
       border: 1px solid #0ff;
@@ -140,14 +106,7 @@
       font-size: 0.9rem;
       margin: 0.5rem 0 0.3rem;
     }
-
-    .button:hover {
-      background: #0ff2;
-      color: white;
-      border-color: white;
-      box-shadow: 0 0 15px cyan;
-    }
-
+    .button:hover { background: #0ff2; color: white; border-color: white; box-shadow: 0 0 15px cyan; }
     .result {
       background: #001a28;
       border-radius: 2rem;
@@ -157,15 +116,14 @@
       color: #b0f0ff;
       font-size: 0.9rem;
       text-align: center;
+      min-height: 50px;
     }
-
     .result strong {
       color: #0ff;
       font-size: 1.3rem;
       font-family: 'Orbitron', monospace;
       display: block;
     }
-
     .badge-row {
       display: flex;
       flex-wrap: wrap;
@@ -173,7 +131,6 @@
       justify-content: center;
       margin: 2rem 0 0.5rem;
     }
-
     .badge {
       background: rgba(0, 255, 255, 0.08);
       border: 1px solid #0ff;
@@ -183,7 +140,6 @@
       color: #9ff;
       font-size: 0.8rem;
     }
-
     .footer {
       margin-top: 2rem;
       text-align: center;
@@ -196,68 +152,62 @@
 </head>
 <body>
 <div class="engine">
-  <h1>  GROW‑WIN · SPACE LOGIC </h1>
+  <h1> GROW‑WIN · SPACE LOGIC </h1>
   <div class="sub"> 7‑PARAMETER MISSION ENGINE</div>
 
   <div class="grid-7">
-    <!-- 1. Orbital Period -->
     <div class="card">
-      <div class="card-title"><span> ️</span> Orbital period</div>
-      <div class="param"><label>semi‑major axis (km)</label><input type="number" id="a" value="7000" step="1"></div>
-      <div class="param"><label>central mass (kg)</label><input type="number" id="M" value="5.972e24" step="any"></div>
+      <div class="card-title">Orbital period</div>
+      <div class="param"><label>semi‑major axis (km)</label><input type="text" id="a" placeholder="Enter km"></div>
+      <div class="param"><label>central mass (kg)</label><input type="text" id="M" placeholder="Ex: 5.972e24"></div>
       <button class="button" id="calcPeriod">compute</button>
       <div class="result" id="periodRes"><strong>--</strong> seconds</div>
     </div>
 
-    <!-- 2. Hohmann Δv -->
     <div class="card">
-      <div class="card-title"><span> </span> Hohmann Δv</div>
-      <div class="param"><label>initial radius (km)</label><input type="number" id="r1" value="7000"></div>
-      <div class="param"><label>final radius (km)</label><input type="number" id="r2" value="42000"></div>
-      <div class="param"><label>mass (kg)</label><input type="number" id="Mh" value="5.972e24"></div>
+      <div class="card-title">Hohmann Δv</div>
+      <div class="param"><label>initial radius (km)</label><input type="text" id="r1" placeholder="Enter km"></div>
+      <div class="param"><label>final radius (km)</label><input type="text" id="r2" placeholder="Enter km"></div>
+      <div class="param"><label>central mass (kg)</label><input type="text" id="Mh" placeholder="Ex: 5.972e24"></div>
       <button class="button" id="calcHohmann">compute</button>
       <div class="result" id="hohmannRes"><strong>--</strong> km/s Δv</div>
     </div>
 
-    <!-- 3. Rocket equation -->
     <div class="card">
-      <div class="card-title"><span> </span> Rocket eqn</div>
-      <div class="param"><label>exhaust velocity (km/s)</label><input type="number" id="ve" value="3.0" step="0.1"></div>
-      <div class="param"><label>mass ratio (m0/mf)</label><input type="number" id="mr" value="2.5" step="0.1"></div>
+      <div class="card-title">Rocket eqn</div>
+      <div class="param"><label>exhaust velocity (km/s)</label><input type="text" id="ve" placeholder="Enter km/s"></div>
+      <div class="param"><label>mass ratio (m0/mf)</label><input type="text" id="mr" placeholder="Ex: 2.5"></div>
       <button class="button" id="calcRocket">compute</button>
       <div class="result" id="rocketRes"><strong>--</strong> km/s Δv</div>
     </div>
 
-    <!-- 4. Slingshot -->
     <div class="card">
-      <div class="card-title"><span> </span> Slingshot gain</div>
-      <div class="param"><label>v_in (km/s)</label><input type="number" id="vin" value="10" step="0.1"></div>
-      <div class="param"><label>planet mass (kg)</label><input type="number" id="mp" value="5.972e24"></div>
-      <div class="param"><label>closest approach (km)</label><input type="number" id="rp" value="10000"></div>
+      <div class="card-title">Slingshot gain</div>
+      <div class="param"><label>v_in (km/s)</label><input type="text" id="vin" placeholder="Enter km/s"></div>
+      <div class="param"><label>planet mass (kg)</label><input type="text" id="mp" placeholder="Ex: 5.972e24"></div>
+      <div class="param"><label>closest approach (km)</label><input type="text" id="rp" placeholder="Enter km"></div>
       <button class="button" id="calcSlingshot">compute</button>
       <div class="result" id="slingshotRes"><strong>--</strong> km/s (final)</div>
     </div>
 
-    <!-- 5. Re‑entry Heat (Sutton‑Grave) -->
     <div class="card">
-      <div class="card-title"><span> </span> Re‑entry heat</div>
-      <div class="param"><label>velocity (km/s)</label><input type="number" id="vRe" value="7.8" step="0.1"></div>
-      <div class="param"><label>atmospheric density (kg/m³)</label><input type="number" id="rho" value="0.01" step="0.001"></div>
-      <div class="param"><label>nose radius (m)</label><input type="number" id="Rnose" value="1.0" step="0.1"></div>
-      <div class="param"><label>planet</label>
+      <div class="card-title">Re‑entry heat</div>
+      <div class="param"><label>velocity (km/s)</label><input type="text" id="vRe" placeholder="Enter km/s"></div>
+      <div class="param"><label>atmospheric density (kg/m³)</label><input type="text" id="rho" placeholder="Ex: 0.01"></div>
+      <div class="param"><label>nose radius (m)</label><input type="text" id="Rnose" placeholder="Enter meters"></div>
+      <div class="param"><label>planet coefficient (k)</label>
         <select id="planetK">
-          <option value="1.7415e-4">Earth (k=1.7415e-4)</option>
-          <option value="1.89e-4">Mars (k=1.89e-4)</option>
+          <option value="1.7415e-4">Earth (1.7415e-4)</option>
+          <option value="1.89e-4">Mars (1.89e-4)</option>
         </select>
       </div>
       <button class="button" id="calcHeat">compute</button>
       <div class="result" id="heatRes"><strong>--</strong> W/cm²</div>
     </div>
 
-    <!-- 6. Radiation shielding (Beer‑Lambert) -->
     <div class="card">
-      <div class="card-title"><span> ️</span> Radiation shield</div>
-      <div class="param"><label>initial intensity (I₀, any)</label><input type="number" id="I0" value="1.0" step="0.1"></div>
+      <div class="card-title">Radiation shield</div>
+      <div class="param"><label>initial intensity (I₀)</label><input type="text" id="I0" placeholder="Enter value"></div>
       <div class="param"><label>material μ (cm⁻¹)</label>
         <select id="muSelect">
           <option value="0.15">Aluminium (0.15)</option>
@@ -266,145 +216,97 @@
           <option value="custom">Custom</option>
         </select>
       </div>
-      <div class="param"><label>custom μ (if selected)</label><input type="number" id="muCustom" value="0.1" step="0.01" disabled></div>
-      <div class="param"><label>thickness x (cm)</label><input type="number" id="x" value="5" step="0.1"></div>
+      <div class="param"><label>custom μ</label><input type="text" id="muCustom" placeholder="Enter μ" disabled></div>
+      <div class="param"><label>thickness x (cm)</label><input type="text" id="x" placeholder="Enter cm"></div>
       <button class="button" id="calcRad">compute</button>
       <div class="result" id="radRes"><strong>--</strong> % blocked</div>
     </div>
 
-    <!-- 7. Payload‑to‑Orbit (TWR & gravity loss) -->
     <div class="card">
-      <div class="card-title"><span> </span> TWR & loss</div>
-      <div class="param"><label>thrust (kN)</label><input type="number" id="thrust" value="1000" step="10"></div>
-      <div class="param"><label>mass (kg)</label><input type="number" id="massT" value="80000" step="100"></div>
-      <div class="param"><label>burn time (s, for loss)</label><input type="number" id="tBurn" value="120" step="1"></div>
-      <button class="button" id="calcTWR">compute TWR & loss</button>
-      <div class="result" id="twrRes"><strong>--</strong> TWR / loss (m/s)</div>
+      <div class="card-title">TWR & loss</div>
+      <div class="param"><label>thrust (kN)</label><input type="text" id="thrust" placeholder="Enter kN"></div>
+      <div class="param"><label>mass (kg)</label><input type="text" id="massT" placeholder="Enter kg"></div>
+      <div class="param"><label>burn time (s)</label><input type="text" id="tBurn" placeholder="Enter seconds"></div>
+      <button class="button" id="calcTWR">compute</button>
+      <div class="result" id="twrRes"><strong>--</strong> TWR / loss</div>
     </div>
   </div>
 
   <div class="badge-row">
     <div class="badge"> no hardware dependency</div>
-    <div class="badge">  pure logic · nasa/isro ready</div>
-    <div class="badge">  seconds not years</div>
+    <div class="badge"> pure logic · nasa/isro ready</div>
+    <div class="badge"> seconds not years</div>
   </div>
 
   <div class="footer">
-    DESINED BY UDAYANA ANANTH KUMAR · end‑to‑end mission logic
+    DESIGNED BY UDAYANA ANANTH KUMAR · end‑to‑end mission logic
   </div>
 </div>
 
 <script>
   (function() {
-    const G = 6.67430e-20; // km³/kg/s²
-    const g0 = 9.80665;    // m/s²
+    const G = 6.67430e-20; 
+    const g0 = 9.80665;    
 
-    // --- 1. Orbital period ---
-    document.getElementById('calcPeriod').addEventListener('click', (e) => {
-      e.preventDefault();
-      const a = parseFloat(document.getElementById('a').value) || 7000;
-      const M = parseFloat(document.getElementById('M').value) || 5.972e24;
-      if (a <= 0 || M <= 0) { document.getElementById('periodRes').innerHTML = '<strong>err</strong>'; return; }
-      const T = 2 * Math.PI * Math.sqrt(a*a*a / (G * M));
+    const parse = (id) => {
+      const val = document.getElementById(id).value;
+      return val === "" ? NaN : parseFloat(val);
+    };
+
+    document.getElementById('calcPeriod').onclick = () => {
+      const a = parse('a'), M = parse('M');
+      if(isNaN(a) || isNaN(M) || a <= 0) { document.getElementById('periodRes').innerHTML='<strong>err</strong>'; return; }
+      const T = 2 * Math.PI * Math.sqrt(Math.pow(a,3) / (G * M));
       document.getElementById('periodRes').innerHTML = `<strong>${T.toFixed(2)}</strong> seconds`;
-    });
+    };
 
-    // --- 2. Hohmann ---
-    document.getElementById('calcHohmann').addEventListener('click', (e) => {
-      e.preventDefault();
-      const r1 = parseFloat(document.getElementById('r1').value) || 7000;
-      const r2 = parseFloat(document.getElementById('r2').value) || 42000;
-      const M = parseFloat(document.getElementById('Mh').value) || 5.972e24;
-      if (r1 <= 0 || r2 <= 0 || M <= 0) { document.getElementById('hohmannRes').innerHTML = '<strong>err</strong>'; return; }
+    document.getElementById('calcHohmann').onclick = () => {
+      const r1 = parse('r1'), r2 = parse('r2'), M = parse('Mh');
+      if(isNaN(r1) || isNaN(r2) || isNaN(M)) { document.getElementById('hohmannRes').innerHTML='<strong>err</strong>'; return; }
       const mu = G * M;
-      const v1 = Math.sqrt(mu / r1);
-      const v2 = Math.sqrt(mu / r2);
+      const v1 = Math.sqrt(mu / r1), v2 = Math.sqrt(mu / r2);
       const a_trans = (r1 + r2) / 2;
       const vp = Math.sqrt(2 * mu * (1/r1 - 1/(2*a_trans)));
       const va = Math.sqrt(2 * mu * (1/r2 - 1/(2*a_trans)));
-      const dv = Math.abs(vp - v1) + Math.abs(v2 - va);
-      document.getElementById('hohmannRes').innerHTML = `<strong>${dv.toFixed(3)}</strong> km/s Δv`;
-    });
+      document.getElementById('hohmannRes').innerHTML = `<strong>${(Math.abs(vp - v1) + Math.abs(v2 - va)).toFixed(3)}</strong> km/s Δv`;
+    };
 
-    // --- 3. Rocket ---
-    document.getElementById('calcRocket').addEventListener('click', (e) => {
-      e.preventDefault();
-      const ve = parseFloat(document.getElementById('ve').value) || 3.0;
-      const mr = parseFloat(document.getElementById('mr').value) || 2.5;
-      if (ve <= 0 || mr <= 1) { document.getElementById('rocketRes').innerHTML = '<strong>err: ratio>1</strong>'; return; }
-      const dv = ve * Math.log(mr);
-      document.getElementById('rocketRes').innerHTML = `<strong>${dv.toFixed(3)}</strong> km/s Δv`;
-    });
+    document.getElementById('calcRocket').onclick = () => {
+      const ve = parse('ve'), mr = parse('mr');
+      if(isNaN(ve) || isNaN(mr) || mr <= 1) { document.getElementById('rocketRes').innerHTML='<strong>err</strong>'; return; }
+      document.getElementById('rocketRes').innerHTML = `<strong>${(ve * Math.log(mr)).toFixed(3)}</strong> km/s Δv`;
+    };
 
-    // --- 4. Slingshot (gain approximation) ---
-    document.getElementById('calcSlingshot').addEventListener('click', (e) => {
-      e.preventDefault();
-      const vin = parseFloat(document.getElementById('vin').value) || 10;
-      const Mp = parseFloat(document.getElementById('mp').value) || 5.972e24;
-      const rp = parseFloat(document.getElementById('rp').value) || 10000;
-      if (vin <= 0 || Mp <= 0 || rp <= 0) { document.getElementById('slingshotRes').innerHTML = '<strong>err</strong>'; return; }
-      const mu = G * Mp;
-      const gain = (2 * mu) / (rp * vin); // km/s
-      const vout = vin + gain;
+    document.getElementById('calcSlingshot').onclick = () => {
+      const vin = parse('vin'), Mp = parse('mp'), rp = parse('rp');
+      if(isNaN(vin) || isNaN(Mp) || isNaN(rp)) { document.getElementById('slingshotRes').innerHTML='<strong>err</strong>'; return; }
+      const vout = vin + ((2 * G * Mp) / (rp * vin));
       document.getElementById('slingshotRes').innerHTML = `<strong>${vout.toFixed(3)}</strong> km/s (final)`;
-    });
+    };
 
-    // --- 5. Re‑entry heat (Sutton‑Grave) ---
-    document.getElementById('calcHeat').addEventListener('click', (e) => {
-      e.preventDefault();
-      const v = parseFloat(document.getElementById('vRe').value) || 7.8; // km/s
-      const rho = parseFloat(document.getElementById('rho').value) || 0.01; // kg/m³
-      const R = parseFloat(document.getElementById('Rnose').value) || 1.0; // m
-      const k = parseFloat(document.getElementById('planetK').value) || 1.7415e-4;
-      if (v <= 0 || rho <= 0 || R <= 0) { document.getElementById('heatRes').innerHTML = '<strong>err</strong>'; return; }
-      // q = k * sqrt(rho/R) * v^3   (v in km/s, result in W/cm² typically)
+    document.getElementById('calcHeat').onclick = () => {
+      const v = parse('vRe'), rho = parse('rho'), R = parse('Rnose'), k = parseFloat(document.getElementById('planetK').value);
+      if(isNaN(v) || isNaN(rho) || isNaN(R)) { document.getElementById('heatRes').innerHTML='<strong>err</strong>'; return; }
       const q = k * Math.sqrt(rho / R) * Math.pow(v, 3);
       document.getElementById('heatRes').innerHTML = `<strong>${q.toExponential(3)}</strong> W/cm²`;
-    });
+    };
 
-    // --- 6. Radiation shielding ---
-    const muSelect = document.getElementById('muSelect');
-    const muCustom = document.getElementById('muCustom');
-    muSelect.addEventListener('change', () => {
-      muCustom.disabled = muSelect.value !== 'custom';
-    });
-    document.getElementById('calcRad').addEventListener('click', (e) => {
-      e.preventDefault();
-      const I0 = parseFloat(document.getElementById('I0').value) || 1.0;
-      let mu = parseFloat(muSelect.value);
-      if (muSelect.value === 'custom') {
-        mu = parseFloat(muCustom.value) || 0.1;
-      }
-      const x = parseFloat(document.getElementById('x').value) || 5; // cm
-      if (mu <= 0 || x < 0) { document.getElementById('radRes').innerHTML = '<strong>err</strong>'; return; }
-      const I = I0 * Math.exp(-mu * x);
-      const percentBlocked = (1 - I/I0) * 100;
-      document.getElementById('radRes').innerHTML = `<strong>${percentBlocked.toFixed(2)}%</strong> blocked`;
-    });
+    document.getElementById('muSelect').onchange = (e) => { document.getElementById('muCustom').disabled = e.target.value !== 'custom'; };
+    document.getElementById('calcRad').onclick = () => {
+      const I0 = parse('I0'), x = parse('x');
+      let mu = document.getElementById('muSelect').value === 'custom' ? parse('muCustom') : parseFloat(document.getElementById('muSelect').value);
+      if(isNaN(I0) || isNaN(mu) || isNaN(x)) { document.getElementById('radRes').innerHTML='<strong>err</strong>'; return; }
+      const blocked = (1 - Math.exp(-mu * x)) * 100;
+      document.getElementById('radRes').innerHTML = `<strong>${blocked.toFixed(2)}%</strong> blocked`;
+    };
 
-    // --- 7. TWR & gravity loss ---
-    document.getElementById('calcTWR').addEventListener('click', (e) => {
-      e.preventDefault();
-      const thrust = parseFloat(document.getElementById('thrust').value) || 1000; // kN
-      const mass = parseFloat(document.getElementById('massT').value) || 80000; // kg
-      const t = parseFloat(document.getElementById('tBurn').value) || 120; // s
-      if (thrust <= 0 || mass <= 0) { document.getElementById('twrRes').innerHTML = '<strong>err</strong>'; return; }
-      const thrustN = thrust * 1000; // N
-      const weight = mass * g0; // N
-      const twr = thrustN / weight;
-      const loss = g0 * t; // m/s (if vertical)
-      document.getElementById('twrRes').innerHTML = `<strong>TWR ${twr.toFixed(2)}</strong> / loss ${loss.toFixed(1)} m/s`;
-    });
-
-    // initial calculations
-    document.getElementById('calcPeriod').click();
-    document.getElementById('calcHohmann').click();
-    document.getElementById('calcRocket').click();
-    document.getElementById('calcSlingshot').click();
-    document.getElementById('calcHeat').click();
-    document.getElementById('calcRad').click();
-    document.getElementById('calcTWR').click();
+    document.getElementById('calcTWR').onclick = () => {
+      const thrust = parse('thrust'), mass = parse('massT'), t = parse('tBurn');
+      if(isNaN(thrust) || isNaN(mass) || isNaN(t)) { document.getElementById('twrRes').innerHTML='<strong>err</strong>'; return; }
+      const twr = (thrust * 1000) / (mass * g0);
+      document.getElementById('twrRes').innerHTML = `<strong>TWR ${twr.toFixed(2)}</strong> / loss ${(g0 * t).toFixed(1)} m/s`;
+    };
   })();
 </script>
 </body>
-</html>html>
+</html>
